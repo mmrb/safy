@@ -20,13 +20,13 @@ exports.showPage = function(req,res){
 
 	if(!pageUrl){ res.send(200,{status : -1,error : "URL不能为空"}); return; }
 
-	var info = url.parse(pageUrl), 
-		path = info.pathname + (info.search || ''), 
-		options = { 
-			host: info.hostname, 
-            port: info.port || 80, 
-            path: path, 
-            method: 'GET' 
+	var info = url.parse(pageUrl),
+		path = info.pathname + (info.search || ''),
+		options = {
+			host: info.hostname,
+            port: info.port || 80,
+            path: path,
+            method: 'GET'
         };
 
     var request = http.request(options,function(response){
@@ -45,7 +45,7 @@ exports.showPage = function(req,res){
 			if(!pageContent){ res.send(200,{ status : -1,error : "网页内容为空"}); return;}
 
 			if(!(/<base/).test(pageContent)){
-				pageContent = pageContent.replace("</head>","<base href='" + urlData.protocol + "//" + urlData.hostname + "'></head>");
+				pageContent = pageContent.replace("<head>","<head><base href='" + urlData.protocol + "//" + urlData.hostname + "'>");
 			}
 
 			async.series([
