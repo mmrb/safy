@@ -2,8 +2,8 @@
  * Module dependencies.
  */
 
-var express = require('express'), 
-	page = require('./app'), 
+var express = require('express'),
+	page = require('./app'),
 	http = require('http'),
 	path = require('path'),
 	cons = require("consolidate"),
@@ -39,7 +39,7 @@ app.set('view engine', 'html');
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.cookieParser(true));
+app.use(express.cookieParser('mmrb'));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'static')));
 
