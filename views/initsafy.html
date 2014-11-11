@@ -46,8 +46,8 @@ function handleInitSafy(){
 		password = $.trim($("#password").val()),
 		database = $.trim($("#database").val()),
 		site = $.trim($("#site").val()) || "localhost",
-		port = $.trim($("#port").val()) || 80;
-		
+		port = $.trim($("#port").val()) || 3000;
+
 	if(!user || !database){
 		monitor.util.showFailAlert("请填写完整的初始化信息");
 		return;
